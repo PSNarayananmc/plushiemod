@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "re_plushie_party:item/gangnam_style_disc"
+	}
+}

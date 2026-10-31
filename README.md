@@ -5,6 +5,8 @@ A faithful Minecraft: Java Edition **Fabric mod** port of the Minecraft Bedrock 
 
 Right-click the **Creeper Plushie** with a **stick** or any **music disc** and everyone
 within 16 blocks — players, mobs and the plushie itself — starts dancing.
+The port also bundles a custom **"Gangnam Style" music disc** (an original synthesized
+party track — see [The Gangnam Style music disc](#the-gangnam-style-music-disc)).
 
 | | |
 |---|---|
@@ -12,6 +14,7 @@ within 16 blocks — players, mobs and the plushie itself — starts dancing.
 | Java | **25** (required by Minecraft 26.2) |
 | Mod id | `plushie_party` |
 | Registry namespace | `re_plushie_party` (identical to the Bedrock addon — commands match: `/summon re_plushie_party:creeper_plushie`) |
+| Download | [`releases/plushie_party-26.2.jar`](releases/plushie_party-26.2.jar) (also on the [Releases page](https://github.com/PSNarayananmc/plushiemod/releases)) |
 | Build | `./gradlew build` (or `gradle build`) → `build/libs/plushie_party-26.2.jar` |
 
 ---
@@ -61,6 +64,20 @@ A 1:1 port of `scripts/main.js`:
 - When the last party ends the ticker stops (`system.clearRun`).
 - Removed hosts/dancers are pruned immediately and at every sync pass.
 
+### Party music (Java-port addition)
+The Bedrock addon leaves the party silent — the music in the demo video comes from
+outside the addon. The Java port plays real music at the plushie instead:
+- Start the party with **any music disc** (vanilla discs or the bundled Gangnam Style
+  disc) → **that disc's song loops at the plushie** (category *Records*, volume 4 ≈
+  64-block audible radius) until the party is toggled off or the host is removed —
+  the sound is cut instantly via a stop-sound packet, not left to fade.
+- Start it with a **stick** → the bundled `re_plushie_party:party_music` loop plays
+  instead (see replacement guide below).
+- The loop interval is the **real track length** (`JukeboxSong#lengthInTicks` for discs,
+  the ogg header for the stick loop), so songs restart cleanly at the beat and
+  user-replaced tracks of any length keep working.
+- Multiple parties each keep their own music state, like the rest of the party system.
+
 ### Animations (exact Molang curve port)
 The three party animations from `plushie_party.animation.json` were transcribed verbatim
 into `PartyDanceCurves.java` (8 beats of 0.4625 s over the 3.7 s loop):
@@ -104,6 +121,40 @@ person** (`v.is_first_person` guard), so the camera is never affected.
 - `/summon re_plushie_party:creeper_plushie` works, entity named "Creeper Plushie"
 - Plushie inside its hitbox block **persists**; plushie in open air **self-discards**
 - `/give re_plushie_party:creeper_plushie_hitbox` works; recipe + loot table parse
+- Gangnam Style disc, both music tracks and the `gangnam_style` jukebox song load;
+  party music loop + stop verified against the exact 26.2 API (`JukeboxSong#fromStack`,
+  `ClientboundStopSoundPacket`) and a clean 26.2 server boot with datapacks
+
+## The Gangnam Style music disc
+
+The requested custom disc is included:
+
+| | |
+|---|---|
+| Item | `re_plushie_party:gangnam_style` — **"Gangnam Style"**, found in the Building Blocks creative tab next to the plushie |
+| Works in jukeboxes | Yes — real `jukebox_playable` item, comparator output 1 (`data/re_plushie_party/jukebox_song/gangnam_style.json`) |
+| Party | Right-click a plushie with it → party starts and the song loops at the plushie |
+| Track | **87.27 s original synthesized K-pop/EDM-style party track** (132 BPM, Am–F–C–G hook) |
+
+**About the audio:** the real PSY recording is copyrighted and is **not** included —
+shipping it would be piracy. The bundled track is an original composition in the same
+energetic party style, so the mod is safe to use and share.
+
+### Replacing the disc track with the real song (or any song)
+
+1. Get a legally obtained copy of the song you own and convert it to mono OGG Vorbis:
+   `ffmpeg -i input.mp3 -ac 1 -c:a libvorbis -qscale:a 5 gangnam_style.ogg`
+2. Replace `assets/re_plushie_party/sounds/gangnam_style.ogg` inside the jar (any zip
+   tool) — or in the source tree, then rebuild.
+3. Update `length_in_seconds` in `data/re_plushie_party/jukebox_song/gangnam_style.json`
+   to the real song length (the in-jukebox behaviour and the party loop both follow it).
+
+### Replacing the stick-party loop
+
+`assets/re_plushie_party/sounds/party_music.ogg` is the track played when a party is
+started with a stick (bundled: a 14.8 s original loop that is an exact multiple of the
+74-tick dance cycle, so it stays on beat). Replace it the same way; the mod parses the
+ogg length at runtime, so any duration loops correctly.
 
 ## Installing
 

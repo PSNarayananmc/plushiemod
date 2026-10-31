@@ -3,6 +3,7 @@ package com.redeagle.plushieparty;
 import com.redeagle.plushieparty.network.PlushieNetworking;
 import com.redeagle.plushieparty.registry.PlushieBlocks;
 import com.redeagle.plushieparty.registry.PlushieEntities;
+import com.redeagle.plushieparty.registry.PlushieItems;
 import com.redeagle.plushieparty.registry.PlushieSounds;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
@@ -31,6 +32,7 @@ public class PlushiePartyMod implements ModInitializer {
                 PlushieSounds.init();
                 PlushieEntities.init();
                 PlushieBlocks.init();
+                PlushieItems.init();
                 PlushieNetworking.init();
                 LOGGER.info("Plushie Party initialized - let's dance!");
         }

@@ -17,5 +17,21 @@
 				"pitch": 1.0
 			}
 		]
+	},
+	"gangnam_style": {
+		"sounds": [
+			{
+				"name": "re_plushie_party:gangnam_style",
+				"stream": true
+			}
+		]
+	},
+	"party_music": {
+		"sounds": [
+			{
+				"name": "re_plushie_party:party_music",
+				"stream": true
+			}
+		]
 	}
 }

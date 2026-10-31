@@ -1,5 +1,7 @@
 {
 	"block.re_plushie_party.creeper_plushie_hitbox": "Creeper Plushie",
 	"entity.re_plushie_party.creeper_plushie": "Creeper Plushie",
-	"item.re_plushie_party.creeper_plushie_hitbox": "Creeper Plushie"
+	"item.re_plushie_party.creeper_plushie_hitbox": "Creeper Plushie",
+	"item.re_plushie_party.gangnam_style": "Gangnam Style",
+	"jukebox_song.re_plushie_party.gangnam_style": "Gangnam Style"
 }

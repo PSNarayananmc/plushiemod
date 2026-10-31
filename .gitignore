@@ -30,3 +30,6 @@ run-server/
 .env
 skills/
 node_modules/
+
+# Old first-attempt workspace (nested git repo)
+plushie_party/
