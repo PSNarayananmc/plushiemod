@@ -1,0 +1,28 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Plushie Party BP",
+    "description": "Right-click a Re-Furn plushie with a stick or music disc to party.",
+    "uuid": "81e508aa-85c5-483d-aaef-69ab8dfd1828",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 50]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "063eee68-7222-4d81-b01f-3a5867772a1f",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "4b606c6d-938c-497d-9a49-c2d4db973ac0",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    { "uuid": "7c91e327-50ab-451e-9204-d3c40d396bca", "version": [1, 0, 0] },
+    { "module_name": "@minecraft/server", "version": "2.10.0" }
+  ]
+}

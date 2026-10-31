@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "re_plushie_party:creeper_plushie",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/re_plushie_party/creeper_plushie" },
+      "geometry": { "default": "geometry.re_plushie_party.creeper_plushie" },
+      "animations": {
+        "interact": "animation.re_plushie_party.plushie_click_squeak",
+        "idle": "animation.re_plushie_party.plushie_idle",
+        "root": "controller.animation.re_plushie_party.plushie_interaction"
+      },
+      "sound_effects": { "toy_use": "re_plushie_party:toy_use" },
+      "scripts": {
+        "should_update_bones_and_effects_offscreen": true,
+        "animate": ["root"]
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}
