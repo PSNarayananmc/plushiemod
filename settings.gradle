@@ -1,0 +1,18 @@
+pluginManagement {
+        repositories {
+                maven {
+                        name = 'Fabric'
+                        url = 'https://maven.fabricmc.net/'
+                }
+                // Mirror of Maven Central (fallback when repo.maven.apache.org rate-limits)
+                maven {
+                        name = 'MavenCentralMirror'
+                        url = 'https://maven-central.storage-download.googleapis.com/maven2/'
+                }
+                mavenCentral()
+                gradlePluginPortal()
+        }
+}
+
+// Should match your modid
+rootProject.name = 'plushie_party'

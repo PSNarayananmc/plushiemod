@@ -1,0 +1,6 @@
+{
+	"sound_event": {"sound_id": "plushie_party:gangnam_style"},
+	"description": {"translate": "plushie_party.jukebox_song.gangnam_style"},
+	"length_in_seconds": 87.27,
+	"comparator_output": 1
+}

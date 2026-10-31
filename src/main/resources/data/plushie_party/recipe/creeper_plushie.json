@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "building",
+	"pattern": [
+		"###",
+		"#G#",
+		"# #"
+	],
+	"key": {
+		"#": "minecraft:lime_wool",
+		"G": "minecraft:gunpowder"
+	},
+	"result": {
+		"id": "plushie_party:creeper_plushie",
+		"count": 1
+	}
+}

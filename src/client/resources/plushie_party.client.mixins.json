@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"package": "com.redeaglestudios.plushieparty.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"minVersion": "0.8",
+	"client": [
+		"LivingEntityRendererMixin",
+		"SpecialModelRenderersAccessor",
+		"SpecialModelRenderersMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

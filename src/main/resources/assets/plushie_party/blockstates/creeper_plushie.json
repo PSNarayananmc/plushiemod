@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"facing=north": {"model": "plushie_party:block/invisible"},
+		"facing=south": {"model": "plushie_party:block/invisible"},
+		"facing=east": {"model": "plushie_party:block/invisible"},
+		"facing=west": {"model": "plushie_party:block/invisible"}
+	}
+}

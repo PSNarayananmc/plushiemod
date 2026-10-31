@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "plushie_party",
+	"version": "${version}",
+	"name": "Plushie Party",
+	"description": "Throw a party in your world! A squeezable Creeper Plushie that makes all nearby mobs and players dance. Ported from the Bedrock add-on by Red Eagle Studios.",
+	"authors": [
+		"Red Eagle Studios",
+		"Plushie Party Team"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft-bedrock/addons/plushie-party"
+	},
+	"license": "All Rights Reserved (port of the Bedrock add-on for private use)",
+	"icon": "assets/plushie_party/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.redeaglestudios.plushieparty.PlushieParty"
+		],
+		"client": [
+			"com.redeaglestudios.plushieparty.client.PlushiePartyClient"
+		]
+	},
+	"mixins": [
+		"plushie_party.mixins.json",
+		{
+			"config": "plushie_party.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

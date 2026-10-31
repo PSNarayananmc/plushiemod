@@ -1,0 +1,7 @@
+{
+	"model": {
+		"type": "minecraft:special",
+		"base": "plushie_party:item/creeper_plushie_base",
+		"model": {"type": "plushie_party:creeper_plushie"}
+	}
+}

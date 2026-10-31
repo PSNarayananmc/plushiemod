@@ -1,0 +1,15 @@
+{
+	"toy_use": {
+		"sounds": [
+			{"name": "plushie_party:toy/toy_use1", "volume": 0.8},
+			{"name": "plushie_party:toy/toy_use2", "volume": 0.8},
+			{"name": "plushie_party:toy/toy_use3", "volume": 0.8}
+		]
+	},
+	"party_music": {
+		"sounds": [{"name": "plushie_party:party_music", "stream": false}]
+	},
+	"gangnam_style": {
+		"sounds": [{"name": "plushie_party:disc/gangnam_style", "stream": true}]
+	}
+}
