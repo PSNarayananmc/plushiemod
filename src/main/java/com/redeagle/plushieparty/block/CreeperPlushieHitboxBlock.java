@@ -97,6 +97,9 @@ public class CreeperPlushieHitboxBlock extends Block {
                                 plushie.setYRot(yaw);
                                 plushie.setXRot(0.0F);
                                 level.addFreshEntity(plushie);
+                        } else {
+                                com.redeagle.plushieparty.PlushiePartyMod.LOGGER.warn(
+                                                "Creeper Plushie entity could not be created at {}", pos);
                         }
                 }
         }

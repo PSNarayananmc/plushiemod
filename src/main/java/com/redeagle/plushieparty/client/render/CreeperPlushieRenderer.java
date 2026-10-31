@@ -38,6 +38,8 @@ public class CreeperPlushieRenderer extends EntityRenderer<CreeperPlushieEntity,
                 public float yaw;
         }
 
+        private static boolean loggedFirstSubmit;
+
         public CreeperPlushieRenderer(EntityRendererProvider.Context context) {
                 super(context);
                 this.shadowRadius = 0.0F;
@@ -67,6 +69,10 @@ public class CreeperPlushieRenderer extends EntityRenderer<CreeperPlushieEntity,
         @Override
         public void submit(PlushieRenderState state, PoseStack poseStack, SubmitNodeCollector collector,
                         net.minecraft.client.renderer.state.level.CameraRenderState camera) {
+                if (!loggedFirstSubmit) {
+                        loggedFirstSubmit = true;
+                        PlushiePartyMod.LOGGER.info("Plushie entity renderer active - the doll should be visible in the world");
+                }
                 float partial = state.ageInTicks % 1.0F;
                 double now = DanceState.nowTicks() + partial;
 
