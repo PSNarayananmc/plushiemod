@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "plushie_party",
+	"version": "${version}",
+	"name": "Plushie Party",
+	"description": "Right-click a Re-Furn plushie with a stick or music disc to party. Faithful Java port of the Plushie Party Bedrock addon by RedEagleStudios.",
+	"authors": [
+		"PSNarayananmc",
+		"Original Bedrock addon by RedEagleStudios"
+	],
+	"contact": {
+		"homepage": "https://github.com/PSNarayananmc/plushiemod"
+	},
+	"license": "All rights reserved (private port, not for distribution)",
+	"icon": "assets/plushie_party/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.redeagle.plushieparty.PlushiePartyMod"
+		],
+		"client": [
+			"com.redeagle.plushieparty.client.PlushiePartyClient"
+		]
+	},
+	"mixins": [
+		"plushie_party.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

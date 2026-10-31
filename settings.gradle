@@ -1,0 +1,20 @@
+pluginManagement {
+        repositories {
+                maven {
+                        name = 'Fabric'
+                        url = 'https://maven.fabricmc.net/'
+                }
+                maven {
+                        name = 'GoogleMavenCentralMirror'
+                        url = 'https://maven-central.storage-download.googleapis.com/maven2/'
+                }
+                maven {
+                        name = 'AliyunMavenCentralMirror'
+                        url = 'https://maven.aliyun.com/repository/public/'
+                }
+                mavenCentral()
+                gradlePluginPortal()
+        }
+}
+
+rootProject.name = 'plushie_party'

@@ -1,0 +1,18 @@
+// Redirects Maven Central (rate-limited on this network) to the Google mirror
+// for every repository declared by the project or by plugins (e.g. Loom).
+allprojects {
+	afterEvaluate {
+		repositories.all { repo ->
+			if (repo instanceof MavenArtifactRepository) {
+				def url = repo.url.toString()
+				if (url.startsWith('https://repo.maven.apache.org/maven2')
+						|| url.startsWith('https://repo1.maven.org/maven2')
+						|| url.startsWith('http://repo.maven.apache.org/maven2')
+						|| url.startsWith('http://repo1.maven.org/maven2')) {
+					repo.url = 'https://maven-central.storage-download.googleapis.com/maven2/'
+					println "Redirected Maven Central repo '${repo.name}' to Google mirror"
+				}
+			}
+		}
+	}
+}

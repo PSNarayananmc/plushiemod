@@ -1,2 +1,32 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# Tools (local JDK/Gradle installs)
+tools/
+
+# Workspace-only folders (user uploads, deliverables, extracted addon)
+upload/
+download/
+addon_extracted/
+tool-results/
+agent-ctx/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Fabric run directories
+run/
+run-client/
+run-server/
+
+# Env
+.env
 skills/
 node_modules/
