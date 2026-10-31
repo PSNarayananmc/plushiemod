@@ -134,6 +134,7 @@ The requested custom disc is included:
 | Item | `re_plushie_party:gangnam_style` — **"Gangnam Style"**, found in the Building Blocks creative tab next to the plushie |
 | Works in jukeboxes | Yes — real `jukebox_playable` item, comparator output 1 (`data/re_plushie_party/jukebox_song/gangnam_style.json`) |
 | Party | Right-click a plushie with it → party starts and the song loops at the plushie |
+| Survival recipe | 8× lime wool around 1× note block (shaped 3×3, `data/re_plushie_party/recipe/gangnam_style.json`) |
 | Track | **87.27 s original synthesized K-pop/EDM-style party track** (132 BPM, Am–F–C–G hook) |
 
 **About the audio:** the real PSY recording is copyrighted and is **not** included —

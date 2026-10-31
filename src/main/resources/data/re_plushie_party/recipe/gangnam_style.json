@@ -1,0 +1,17 @@
+{
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+                "LLL",
+                "LNL",
+                "LLL"
+        ],
+        "key": {
+                "L": "minecraft:lime_wool",
+                "N": "minecraft:note_block"
+        },
+        "result": {
+                "count": 1,
+                "id": "re_plushie_party:gangnam_style"
+        }
+}
