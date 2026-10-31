@@ -10,7 +10,7 @@ party track — see [The Gangnam Style music disc](#the-gangnam-style-music-disc
 
 | | |
 |---|---|
-| Target | Minecraft Java **26.2** (Fabric Loader **0.20.1**, Fabric API **0.161.0+26.2**) |
+| Target | Minecraft Java **26.2** (Fabric Loader **0.19.5 or newer**, Fabric API **0.161.0+26.2**) |
 | Java | **25** (required by Minecraft 26.2) |
 | Mod id | `plushie_party` |
 | Registry namespace | `re_plushie_party` (identical to the Bedrock addon — commands match: `/summon re_plushie_party:creeper_plushie`) |
