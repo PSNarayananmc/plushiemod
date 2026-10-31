@@ -1,6 +1,7 @@
 import json, os, urllib.request, urllib.error
 
 PAT = os.environ["PAT"]
+TAG = os.environ.get("TAG", "v1.0.2")
 REPO = "PSNarayananmc/plushiemod"
 JAR = "/home/z/my-project/releases/plushie_party-26.2.jar"
 BASE = {"Authorization": "Bearer " + PAT, "Accept": "application/vnd.github+json", "User-Agent": "plushie-release-script"}
@@ -26,10 +27,10 @@ print("LATEST COMMIT:", c["sha"][:7], "|", c["commit"]["message"].splitlines()[0
 
 # 2) create release (or reuse the tag if it already exists)
 rel_body = {
-    "tag_name": "v1.0.1",
+    "tag_name": TAG,
     "target_commitish": "main",
     "name": "Plushie Party 26.2 — Fabric Loader 0.19.5+ build (updated)",
-    "body": ("**Updated build:**\n\n"
+    "body": ("**Updated build — supersedes v1.0.1. Two changes vs the original:**\n\n"
              "- **Fix:** accepts Fabric Loader **0.19.5 or newer** (previously required 0.20.1) — fixes the startup error `Replace mod 'Fabric Loader' (fabricloader) 0.19.5 with version 0.20.1 or later`\n"
              "- **New:** survival recipe for the **Gangnam Style** disc — 8× lime wool around 1× note block\n\n"
              "**Requirements:** Minecraft Java 26.2 | Fabric Loader 0.19.5+ | Fabric API 0.161.0+26.2 | Java 25\n\n"
@@ -45,18 +46,17 @@ try:
                headers={"Content-Type": "application/json"}, method="POST")
     print("CREATED RELEASE:", rel["html_url"])
 except urllib.error.HTTPError:
-    rel = call("https://api.github.com/repos/%s/releases/tags/v1.0.1" % REPO)
+    rel = call("https://api.github.com/repos/%s/releases/tags/%s" % (REPO, TAG))
     print("REUSING EXISTING RELEASE:", rel["html_url"])
-    call("https://api.github.com/repos/%s/releases/%d" % (REPO, rel["id"]),
-         data=json.dumps({"name": rel_body["name"], "body": rel_body["body"]}).encode(),
-         headers={"Content-Type": "application/json"}, method="PATCH")
-    print("RELEASE NOTES UPDATED")
 
-# 3) attach the freshest jar (replace any previously uploaded asset)
+# 3) attach the freshest jar (fail-soft replace of any old asset)
 for a in rel.get("assets", []):
     if a["name"] == "plushie_party-26.2.jar":
-        call("https://api.github.com/repos/%s/releases/%d/assets/%d" % (REPO, rel["id"], a["id"]), method="DELETE")
-        print("OLD ASSET REMOVED")
+        try:
+            call("https://api.github.com/repos/%s/releases/%d/assets/%d" % (REPO, rel["id"], a["id"]), method="DELETE")
+            print("OLD ASSET REMOVED")
+        except urllib.error.HTTPError:
+            print("WARN: could not delete old asset, uploading anyway")
 up = call("https://uploads.github.com/repos/%s/releases/%d/assets?name=plushie_party-26.2.jar" % (REPO, rel["id"]),
           data=open(JAR, "rb").read(), headers={"Content-Type": "application/octet-stream"})
 print("ASSET:", up["browser_download_url"], "(%d bytes)" % up["size"])
