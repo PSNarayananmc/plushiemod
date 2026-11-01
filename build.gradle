@@ -1,5 +1,5 @@
 plugins {
-        id 'net.fabricmc.fabric-loom' version '1.19-SNAPSHOT'
+        id 'net.fabricmc.fabric-loom' version '1.19.3'
         id 'maven-publish'
 }
 
@@ -21,6 +21,13 @@ repositories {
                 url = 'https://maven.aliyun.com/repository/public/'
         }
         mavenCentral()
+}
+
+// Direct Maven Central traffic gets HTTP 429 here; the Google mirror above serves the
+// identical artifacts, so exclude every group from the direct repository (including the
+// one Fabric Loom adds internally).
+repositories.matching { it.url != null && it.url.toString().contains('repo.maven.apache.org') }.all {
+        content { excludeGroup '*' }
 }
 
 loom {
